@@ -1,0 +1,8 @@
+{
+  "name": "newsoftoday",
+  "app_id": "fb0aee81",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
