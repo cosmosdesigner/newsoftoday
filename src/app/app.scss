@@ -1,5 +1,59 @@
 // http://ionicframework.com/docs/theming/
 
+$primary:#4E2FCD;
+
+ion-grid {
+    background: #f3f3f3;
+    }
+
+html,body{
+    background-color:#fff;
+}
+
+.primary-bg{
+    background-color:$primary;
+    color:#fff;
+}
+
+.logo-wrapper{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.share-wrapper{
+    height:calc(100vh - 150px);
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    .share{
+        padding-bottom:1em;
+        border-bottom:2px solid #f3f3f3;
+        p{
+            &.down-share{
+                color:#D0021B
+            }
+            &.up-share{
+                color:#7ED321
+            }
+        }  
+    }
+}
+
+.top20{
+    background-color: #f6f6f6;
+    height: 100vh;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    h4{
+        color:$primary;
+        font-weight: bold;
+    }
+    .news-item{
+        margin-bottom:4em;
+    }
+}
+
+
 
 // App Global Sass
 // --------------------------------------------------

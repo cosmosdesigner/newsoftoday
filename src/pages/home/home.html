@@ -1,14 +1,43 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-grid no-padding>
+  <ion-row style="height: 100vh">
+    <ion-col col-2 no-padding>
+      <ion-row text-center>
+        <ion-col col-12 class="primary-bg" style="height:150px;"><div class="logo-wrapper">  <img src="../../assets/icon/Group.svg"/></div></ion-col>
+        <ion-col col-12 class="share-wrapper">
+          <section class="share" *ngFor="let item of allStocks">
+            <h4>{{item.Name}}</h4>
+            <p class="down-share">{{item.DailyPercentualChange}}</p>
+          </section>
+         
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col col-3 class="top20" no-padding>
+      <ion-row>
+        <ion-col col-12 padding>
+          <section class="news-item" *ngFor="let item of allNews" >
+            <h4>{{item.title}}</h4>
+            <p>{{item.description}}</p>
+          </section>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col col-7>
+      <ion-row>
+        <ion-col col-10 padding>
+          <button ion-button outline round>Primary Outline</button>
+          <button ion-button outline round>Primary Outline</button>
+          <button ion-button outline round>Primary Outline</button>
+          <button ion-button outline round>Primary Outline</button>
+          <button ion-button outline round>Primary Outline</button>
+          <button ion-button outline round>Primary Outline</button>
+          <button ion-button outline round>Primary Outline</button>
+        </ion-col>
+        <ion-col col-2 padding>
+            <ion-icon name="md-cog" color="secondary" (click)="settingsPage($event)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
