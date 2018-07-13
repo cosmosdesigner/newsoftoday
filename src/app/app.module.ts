@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { SettingsPageModule } from '../pages/settings/settings.module';
 import { SettingsPage } from '../pages/settings/settings'
 import { NewsService } from '../app/news.service';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { NewsService } from '../app/news.service';
     StatusBar,
     SplashScreen,
     NewsService,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

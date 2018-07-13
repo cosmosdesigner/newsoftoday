@@ -2,8 +2,12 @@
 
 $primary:#4E2FCD;
 
+a{
+    text-decoration: none;
+}
+
 ion-grid {
-    background: #f3f3f3;
+    background: #fff;
     }
 
 html,body{
@@ -51,6 +55,12 @@ html,body{
     .news-item{
         margin-bottom:4em;
     }
+}
+
+.selected-news{
+    height:calc(100vh - 100px);
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 

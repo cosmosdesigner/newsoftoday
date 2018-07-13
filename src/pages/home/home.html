@@ -2,40 +2,79 @@
   <ion-row style="height: 100vh">
     <ion-col col-2 no-padding>
       <ion-row text-center>
-        <ion-col col-12 class="primary-bg" style="height:150px;"><div class="logo-wrapper">  <img src="../../assets/icon/Group.svg"/></div></ion-col>
+        <ion-col col-12 class="primary-bg" style="height:150px;">
+          <div class="logo-wrapper">
+            <img src="assets/icon/Group.svg" />
+          </div>
+        </ion-col>
         <ion-col col-12 class="share-wrapper">
           <section class="share" *ngFor="let item of allStocks">
             <h4>{{item.Name}}</h4>
-            <p class="down-share">{{item.DailyPercentualChange}}</p>
+            <p [ngClass]="{'down-share':down(item.DailyPercentualChange),'up-share' : !down(item.DailyPercentualChange)}">{{item.DailyPercentualChange}}</p>
           </section>
-         
-
         </ion-col>
       </ion-row>
     </ion-col>
-    <ion-col col-3 class="top20" no-padding>
+    <ion-col col-3 class="top20" id="headlines" no-padding>
       <ion-row>
         <ion-col col-12 padding>
-          <section class="news-item" *ngFor="let item of allNews" >
-            <h4>{{item.title}}</h4>
+          <section class="news-item" *ngFor="let item of allNews">
+            <a (click)="goURL(item.url)" target="_blank">
+              <h4>{{item.title}}</h4>
+            </a>
             <p>{{item.description}}</p>
           </section>
         </ion-col>
       </ion-row>
     </ion-col>
-    <ion-col col-7>
+    <ion-col col-7 padding>
       <ion-row>
         <ion-col col-10 padding>
-          <button ion-button outline round>Primary Outline</button>
-          <button ion-button outline round>Primary Outline</button>
-          <button ion-button outline round>Primary Outline</button>
-          <button ion-button outline round>Primary Outline</button>
-          <button ion-button outline round>Primary Outline</button>
-          <button ion-button outline round>Primary Outline</button>
-          <button ion-button outline round>Primary Outline</button>
+          <ng-container *ngFor="let category of listCategories">
+            <button ion-button [outline]="!(category.param === selectedParam)" round (click)="getNewsFromCategory(category.param);selectedParamFunc(category.param);">{{category.nome}}</button>
+          </ng-container>
         </ion-col>
         <ion-col col-2 padding>
-            <ion-icon name="md-cog" color="secondary" (click)="settingsPage($event)"></ion-icon>
+          <button ion-button outline round>
+            <ion-icon name="md-cog" color="primary" (click)="settingsPage($event)"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="selected-news" id="categoryNews" *ngIf="allNewsCategory">
+        <ion-col col-12>
+          <ion-card>
+            <img src="{{allNewsCategory[0].urlToImage}}" />
+            <ion-card-content>
+              <ion-card-title>
+                {{allNewsCategory[0].title}}
+              </ion-card-title>
+              <p>
+                {{allNewsCategory[0].description}}
+              </p>
+              <button ion-button clear small color="primary" icon-start (click)="goURL(allNewsCategory[0].url)">
+                <ion-icon name='share-alt'></ion-icon>
+                Ver notícia
+              </button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col col-6 *ngFor="let itemsSmall of allNewsCategory; let i=index">
+          <ion-card *ngIf="i>1 && allNewsCategory">
+            <img src="{{itemsSmall.urlToImage}}" />
+            <ion-card-content>
+              <ion-card-title>
+                {{itemsSmall.title}}
+              </ion-card-title>
+              <p>
+                {{itemsSmall.description}}
+              </p>
+
+              <button ion-button clear small color="primary" icon-start (click)="goURL(itemsSmall.url)">
+                <ion-icon name='share-alt'></ion-icon>
+                Ver notícia
+              </button>
+            </ion-card-content>
+          </ion-card>
         </ion-col>
       </ion-row>
     </ion-col>
